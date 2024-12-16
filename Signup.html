@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation </title>
+    <!-- <link rel="stylesheet" href="form.css"> -->
+    <style>
+        h1{
+    color: red;
+    text-align: center;
+    margin: 20px auto;
+    width: 200px;
+    padding: 5px;
+    border-bottom: 5px double rgb(2, 211, 2);
+    text-shadow: 0 0 10px black;
+
+}
+.form-container{
+    border: 5px groove blue;
+    border-radius: 15px;
+    min-height: 400px;
+    width: 300px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color:gold;
+    padding: 20px;
+    background-color: rgb(3, 3, 3);
+    box-shadow: 0 0 15px black;
+    
+}
+input,textarea{
+    padding: 7px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(156, 152, 152);
+    &&::placeholder{
+        color: rgb(152, 5, 152);
+        font-weight: bold;
+        font-size: 15px;
+    }
+}
+
+button{
+    padding: 7px;
+    font-weight: bold;
+    font-size: 18px;
+    background-color: gold;
+    margin-top: 10px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.errors{
+    color: red;
+    min-height: 10px;
+    font-size: 12px;
+    font-weight: bold;
+}
+    </style>
+</head>
+<body><h1>Signup</h1>
+    <form class="form-container">
+        <label for="name">Name : </label>
+     <input type="text" placeholder="Enter Your Name" id="name"/>
+     <span id="name-error" class="errors"></span>
+
+      <label for="email">Email : </label>
+      <input type="email" placeholder="abcd@gmail.com" id="email"/>
+      <span id="email-error" class="errors"></span>
+  
+      <label for="phone">Phone Number : </label>
+      <input type="tel" placeholder=" 9874561230" id="phone">
+      <span id="phone-error" class="errors"></span>
+
+      <label for="add">Address : </label>
+      <textarea id="add"></textarea>
+      <span id="add-error" class="errors"></span>
+
+      <label for="password">Password : </label>
+      <input type="password" placeholder="Enter Your Password" id="password">
+      <span id="password-error" class="errors"></span>
+       
+      <button type="submit" id="btn">Register</button>
+
+    </form>
+    <script>
+        // Input selected :- 
+let form = document.querySelector(".form-container");
+let userName = document.querySelector("#name");
+let userEmail = document.querySelector("#email");
+let userPhone = document.querySelector("#phone");
+let userAddress = document.querySelector("#add");
+let userPassword = document.querySelector("#password");
+
+// Errors Selected :- 
+let nameError = document.querySelector("#name-error");
+let emailError = document.querySelector("#email-error");
+let phoneError = document.querySelector("#phone-error");
+let addError = document.querySelector("#add-error");
+let passError = document.querySelector("#password-error");
+
+// form Validation :-
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    clearError();
+    let newName = userName.value.trim();
+    let newEmail = userEmail.value.trim();
+    let newPhone = userPhone.value.trim();
+    let newPassword = userPassword.value.trim();
+    let newAddress = userAddress.value.trim();
+
+    if (nameValidation(newName) &&
+        emailValidation(newEmail) &&
+        phoneValidation(newPhone) &&
+        addValidation(newAddress) &&
+        passwordValidation(newPassword)
+    ) {
+        alert("Form Submitted Successfully");
+        console.log(newName, newEmail, newPhone, newAddress, newPassword);
+        clearInput();
+    }
+});
+
+// Name validation :- 
+const nameValidation = (input) => {
+    if (input.length < 2) {
+        nameError.innerText = " Name Must be atleast 2 Character long";
+        return false;
+    }
+    let isValidName = /^[a-zA-Z ]*$/;
+    if (!isValidName.test(input)) {
+        nameError.innerText = "Enter a valid Name ";
+        return false;
+    }
+    return true;
+};
+
+// Email Validation :- 
+const emailValidation = (input) => {
+    const isValidEmail = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
+    if (!isValidEmail.test(input)) {
+        emailError.innerText = " Enter a valid Email";
+        return false;
+    }
+    return true;
+};
+
+// Phone Validation :- 
+const phoneValidation = (input) => {
+    let isValidPhone = /^(?:(?:\+|0{0,2})91(\s*|[\-])?|[0]?)?([6789]\d{2}([ -]?)\d{3}([ -]?)\d{4})$/;
+    if (!isValidPhone.test(input)) {
+        phoneError.innerText = "Enter a Valid Phone Number";
+        return false;
+    };
+    return true;
+};
+// Address Validation :- 
+const addValidation = (input) => {
+    let isValidAddress = /^[a-zA-Z0-9\s\,\''\-]*$/;
+    if (!isValidAddress.test(input)) {
+        addError.innerText = " Enter a valid Address ";
+        return false;
+    }
+    return true;
+};
+
+// Password Validation :- 
+const passwordValidation = (input) => {
+    const isValidPassword = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    if (!isValidPassword.test(input)) {
+        passError.innerText = " Enter a valid Password";
+        return false;
+    }
+    return true;
+}
+
+let clearError = () => {
+    nameError.innerText = "";
+    emailError.innerText = "";
+    phoneError.innerText = "";
+    addError.innerText = "";
+    passError.innerText = "";
+}
+let clearInput = () => {
+    userName.value = "";
+    userEmail.value = "";
+    userPhone.value = "";
+    userAddress.value = "";
+    userPassword.value = "";
+}
+
+</script>
+</body>
+</html>

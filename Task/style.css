@@ -1,0 +1,112 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    border: 2px solid black;
+}
+.card{
+    width:330px;
+    height: 500px;
+    /* border: 2px solid black; */
+    display:inline-block;
+    margin:  15px;
+    padding: 5px;
+    border-radius: 5px;
+    &:hover{
+    box-shadow: 0 0 5px rgb(150, 150, 150);
+    scale: 1.01;
+}
+}
+.card img{
+    width: 320px;
+    height:300px;
+}
+#para{
+    margin-top: 10px;
+    /* text-align:justify; */
+    font-size:large;
+    font-weight: bold;
+    &:hover{
+        color: blue;
+        cursor: pointer;
+    }
+}
+#rating{
+    display: inline-block;
+    width: 60px;
+    height: 28px;
+    background-color: green;
+    color: azure;
+    padding: 0 0 0 5px;
+    border-radius: 5px;
+    text-align: center;
+    margin: 5px;
+    cursor: pointer;
+}
+#ratting{
+    cursor: pointer;
+   font-weight:bold;
+   font-size:14px ;
+   color: rgb(142, 142, 142);
+}
+#rating img{
+        width: 15px;
+        height: 15px;
+        margin: 5px 0 0 10px;
+}
+#price{
+    display: inline-block;
+    font-weight: bold;
+    margin:5px 0 0 30px;
+    font-size: x-large;
+}
+#del-off{
+    display: inline-block;
+    margin: 0 0 0 30px;
+}
+#dis{
+    font-size: large;
+    font-weight: bolder;
+    color: rgb(89, 178, 0);
+}
+#del{
+    color: rgb(122, 122, 122);
+    margin: 0 10px 0 0;
+    font-size:large;
+}
+
+#btn{
+    display: inline-block;
+    padding: 0 0 2px 0 ;
+    margin: 10px 0px 0px 15px;
+    background-color:rgb(241, 97, 31);
+    width: 140px;
+    height: 40px;
+    color: aliceblue;
+    font-weight: bold;
+    border: none;
+    border-radius: 2px;
+    text-align: center;
+    cursor: pointer;
+}
+#btn2{
+    display: inline-block;
+    padding: 0 0 2px 0;
+    margin: 10px 0px 0px 15px;
+    background-color:rgb(237, 144, 5);
+    width: 140px;
+    height: 40px;
+    color: aliceblue;
+    font-weight: bold;
+    border: none;
+    border-radius: 2px;
+    text-align: center;
+    cursor: pointer;
+}
+#btn-img{
+width: 25px;
+height: 25px;
+margin:1px 2px -5px 0;
+}
